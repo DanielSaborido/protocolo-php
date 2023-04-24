@@ -24,17 +24,18 @@ function nuevoSecreto($colores) {
 
 // Calcula resultados de un intento
 function calculaResultado($intento, $secreto) {
-    $heridos = 0;
-    $muertos = 0;
     for($i=0; $i<4; $i++) {
         if($intento[$i] == $secreto[$i]) {
-            $muertos++;
+            print("<input style='background-color:green' disabled type='color' value='$intento[$i]'>");
             continue;
         }
-        if(in_array($intento[$i], $secreto))
-            $heridos++;
+        if(in_array($intento[$i], $secreto)){
+            print("<input style='background-color:yellow' disabled type='color' value='$intento[$i]'>");
+        }
+        else{
+            print("<input disabled type='color' value='$intento[$i]'>");
+        }
     }
-    return "Acertados: $muertos   Descolocados: $heridos";
 }
 
 
@@ -71,15 +72,8 @@ if(!empty($_POST)) {
     <form action='' method='post'>
     ";
     for($i=0; $i<4; $i++)
-        if($intento[$i] == $secreto[$i]) {
-            print("<input style='background-color:green' disabled type='color' value='$intento[$i]'>");
-        }
-        if(in_array($intento[$i], $secreto)){
-            print("<input style='background-color:yellow' disabled type='color' value='$intento[$i]'>");
-        }
-        else{
-            print("<input disabled type='color' value='$intento[$i]'>");
-        }
+        print("<input disabled type='color' value='$intento[$i]'>");
+
     echo "
     </form>
     </div>
