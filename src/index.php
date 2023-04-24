@@ -71,8 +71,15 @@ if(!empty($_POST)) {
     <form action='' method='post'>
     ";
     for($i=0; $i<4; $i++)
-        print("<input disabled type='color' value='$intento[$i]'>");
-
+        if($intento[$i] == $secreto[$i]) {
+            print("<input style='background-color:green' disabled type='color' value='$intento[$i]'>");
+        }
+        if(in_array($intento[$i], $secreto)){
+            print("<input style='background-color:yellow' disabled type='color' value='$intento[$i]'>");
+        }
+        else{
+            print("<input disabled type='color' value='$intento[$i]'>");
+        }
     echo "
     </form>
     </div>
