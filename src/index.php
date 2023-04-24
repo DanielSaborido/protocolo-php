@@ -1,14 +1,16 @@
 <?php
 // Posibles colores para combinaciones
 $colores = array(
-    "Yellow" => "#ffff00",
+    "White" => "#ffffff",
     "Black" => "#000000",
+    "Blue" => "#0000ff",
     "Green" => "#00ff00",
-    "Red"=>"#ff0000",
-    "Cyan"=>"#00ffff",
-    "White"=>"#ffffff",
-    "Purple"=>"#ff00ff",
-    "Blue"=>"#0000ff"
+    "Red" => "#ff0000",
+    "Yellow" => "#ffff00",
+    "Cyan" => "#00ffff",
+    "Light green" => "0xFF8BC34A",
+    "Dark turquoise" => "0xFF00CED1",
+    "Purple" => "#ff00ff"
 );
 
 // Sortea una nueva combinación
@@ -58,13 +60,14 @@ $_SESSION["secreto"] = $secreto;
     ?>
 </datalist>
 <?php
+$intentos = 0;
 if(!empty($_POST)) {
-
+    $intentos++;
     $intento = $_POST['intento'];
     echo "
     <br>
     <div>
-    <i>Intento</i>
+    <i>Intento numero $intentos</i>
     <form action='' method='post'>
     ";
     for($i=0; $i<4; $i++)
