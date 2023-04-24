@@ -38,6 +38,15 @@ function calculaResultado($intento, $secreto) {
     }
 }
 
+function intentos(){
+    if (!isset($_SESSION['intentos'])){
+        $_SESSION['intentos']=1;
+    }
+    else{
+        $_SESSION['intentos']++;
+    }
+    echo "<i>Intento numero ".$_SESSION['intentos']."</i>"
+}
 
 // Inicializa la sesión
 session_start();
@@ -67,8 +76,9 @@ if(!empty($_POST)) {
     $intento = $_POST['intento'];
     echo "
     <br>
-    <div>
-    <i>Intento numero $intentos</i>
+    <div>";
+    intentos();
+    echo "
     <form action='' method='post'>
     ";
     print(calculaResultado($intento, $secreto));
