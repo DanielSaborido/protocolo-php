@@ -71,40 +71,30 @@ if(!empty($_POST)) {
     <i>Intento numero $intentos</i>
     <form action='' method='post'>
     ";
-    for($i=0; $i<4; $i++)
-        print("<input disabled type='color' value='$intento[$i]'>");
-
-    echo "
-    </form>
-    </div>
-    <br>
-    <div>
-    <i>Resultado</i><br>
-    <i>";
     print(calculaResultado($intento, $secreto));
     echo "
-    </i>
-    </div>";
+    <br>";
 }
 ?>
 <br>
 <div>
-<i>Jugada</i>
-<form action="" method="post">
-    <?php
-    for($i=0; $i<4; $i++) {
-        print("<input type='color' list='presets' name='intento[$i]' value='");
-        if(isset($intento)) print($intento[$i]);
-        print("'>");
-    }
-    ?>
-    <input type="submit" value="Intentar">
-</form>
-</div>
-<div>
-    <form action="reiniciar.php">
-        <input type="submit" value="Reiniciar">
-    </form>
+  <i>Jugada</i>
+  <br>
+  <form action="" method="post">
+      <?php
+      for($i=0; $i<4; $i++) {
+          print("<input type='color' list='presets' name='intento[$i]' value='");
+          if(isset($intento)) print($intento[$i]);
+          print("'>");
+      }
+      ?>
+      <br>
+      <br>
+      <input type="submit" value="Intentar">
+  </form>
+  <form action="reiniciar.php">
+      <input type="submit" value="Reiniciar">
+  </form>
 </div>
 </body>
 </html>
