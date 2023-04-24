@@ -45,7 +45,7 @@ function intentos(){
     else{
         $_SESSION['intentos']++;
     }
-    echo "<i>Intento numero ".$_SESSION['intentos']."</i>"
+    echo "<i>Intento numero ".$_SESSION['intentos']."</i>";
 }
 
 // Inicializa la sesión
