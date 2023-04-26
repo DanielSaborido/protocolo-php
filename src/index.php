@@ -74,6 +74,11 @@ $arrayintentos = array();
 if(!empty($_POST)) {
     $intento = $_POST['intento'];
     array_push($arrayintentos,array($intento));
+    for($i=0; $i<count($arrayintentos); $i++) {
+        print($arrayintentos[$i]);
+        echo "
+        <br>";
+    }
     echo "
     <br>
     <div>";
@@ -81,9 +86,9 @@ if(!empty($_POST)) {
     echo "
     <form>
     ";
-    for($i=0; $i<count($arrayintentos); $i++) {
-        print(calculaResultado($arrayintentos[$i], $secreto));
-    }
+    //for($i=0; $i<count($arrayintentos); $i++) {
+    //    print(calculaResultado($arrayintentos[$i], $secreto));
+    //}
     echo "
     </form>
     <br>";
