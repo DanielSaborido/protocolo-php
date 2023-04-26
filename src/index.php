@@ -70,8 +70,10 @@ $_SESSION["secreto"] = $secreto;
     ?>
 </datalist>
 <?php
+$arrayintentos = array();
 if(!empty($_POST)) {
     $intento = $_POST['intento'];
+    array_push($arrayintentos,array($intento));
     echo "
     <br>
     <div>";
