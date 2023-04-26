@@ -1,5 +1,4 @@
 <?php
-$intentos = 0;
 // Posibles colores para combinaciones
 $colores = array(
     "White" => "#ffffff",
@@ -72,7 +71,6 @@ $_SESSION["secreto"] = $secreto;
 </datalist>
 <?php
 if(!empty($_POST)) {
-    $intentos++;
     $intento = $_POST['intento'];
     echo "
     <br>
