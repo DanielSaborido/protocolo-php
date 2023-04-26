@@ -77,10 +77,13 @@ if(!empty($_POST)) {
     <div>";
     intentos();
     echo "
-    <form action='' method='post'>
+    <form>
     ";
-    print(calculaResultado($intento, $secreto));
+    for($i=0; $i<count($arrayintentos); $i++) {
+        print(calculaResultado($arrayintentos[$i], $secreto));
+    }
     echo "
+    </form>
     <br>";
 }
 ?>
