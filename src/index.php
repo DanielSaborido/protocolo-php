@@ -13,6 +13,7 @@ $colores = array(
     "Purple" => "#ff00ff"
 );
 
+$almacen = array();
 // Sortea una nueva combinación
 function nuevoSecreto($colores) {
     $secreto = array();
@@ -35,6 +36,11 @@ function calculaResultado($intento, $secreto) {
             print("<input disabled type='color' value='$intento[$i]'>");
         }
     }
+}
+
+function arrayintentos($intento) {
+    array_push($almacen,array($intento));
+    return $almacen;
 }
 
 function intentos(){
@@ -70,15 +76,8 @@ $_SESSION["secreto"] = $secreto;
     ?>
 </datalist>
 <?php
-$arrayintentos = array();
 if(!empty($_POST)) {
     $intento = $_POST['intento'];
-    array_push($arrayintentos,array($intento));
-    for($i=0; $i<count($arrayintentos); $i++) {
-        print($arrayintentos[$i]);
-        echo "
-        <br>";
-    }
     echo "
     <br>
     <div>";
@@ -86,9 +85,9 @@ if(!empty($_POST)) {
     echo "
     <form>
     ";
-    //for($i=0; $i<count($arrayintentos); $i++) {
-    //    print(calculaResultado($arrayintentos[$i], $secreto));
-    //}
+    for($i=0; $i<count(arrayintentos($intento)); $i++) {
+        print(calculaResultado($almacen[$i], $secreto));
+    }
     echo "
     </form>
     <br>";
