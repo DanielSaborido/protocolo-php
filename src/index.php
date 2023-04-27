@@ -73,7 +73,6 @@ $_SESSION["secreto"] = $secreto;
 $arrayintentos = array();
 if(!empty($_POST)) {
     $intento = $_POST['intento'];
-    array_push($arrayintentos,array($intento));
     echo "
     <br>
     <div>";
@@ -81,8 +80,9 @@ if(!empty($_POST)) {
     echo "
     <form>
     ";
+    array_push($arrayintentos,array(calculaResultado($intento, $secreto))); 
     for($i=0; $i<count($arrayintentos); $i++) {
-        print(calculaResultado($arrayintentos[$i], $secreto));
+        print_r($arrayintentos[$i]); 
     }
     echo "
     </form>
