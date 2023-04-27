@@ -70,7 +70,7 @@ $_SESSION["secreto"] = $secreto;
     ?>
 </datalist>
 <?php
-$arrayintentos = array();
+$guardadointen = array();//intento para crear una Two-dimensional Array
 if(!empty($_POST)) {
     $intento = $_POST['intento'];
     echo "
@@ -80,9 +80,10 @@ if(!empty($_POST)) {
     echo "
     <form>
     ";
-    array_push($arrayintentos,array(calculaResultado($intento, $secreto))); 
-    for($i=0; $i<count($arrayintentos); $i++) {
-        print_r($arrayintentos[$i]); 
+    calculaResultado($intento, $secreto);//intentar meter el resultado en la variable $intentorealizado
+    array_push($guardadointen,array($intentorealizado)); 
+    for($i=0; $i<count($guardadointen); $i++) {
+        print_r($guardadointen[$i]); 
     }
     echo "
     </form>
