@@ -80,7 +80,7 @@ if(!empty($_POST)) {
     echo "
     <form>
     ";
-    calculaResultado($intento, $secreto);//intentar meter el resultado en la variable $intentorealizado
+    $intentorealizado=array(calculaResultado($intento, $secreto));//intentar meter el resultado en la variable $intentorealizado
     array_push($guardadointen,array($intentorealizado)); 
     for($i=0; $i<count($guardadointen); $i++) {
         print_r($guardadointen[$i]); 
