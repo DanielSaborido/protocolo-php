@@ -83,7 +83,7 @@ if(!empty($_POST)) {
     $intentorealizado=array(calculaResultado($intento, $secreto));//intentar meter el resultado en la variable $intentorealizado
     array_push($guardadointen,array($intentorealizado)); 
     for($i=0; $i<count($guardadointen); $i++) {
-        foreach ($guardadointen[$i] as $value) 
+        foreach ($guardadointen[$i] as $value) {
            print_r($value);
         } 
     }
