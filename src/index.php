@@ -23,18 +23,22 @@ function nuevoSecreto($colores) {
 
 // Calcula resultados de un intento
 function calculaResultado($intento, $secreto) {
-    for($i=0; $i<4; $i++) {
+    $resultado = array();
+    
+    for($i = 0; $i < 4; $i++) {
         if($intento[$i] == $secreto[$i]) {
-            print("<input style='background-color:green' disabled type='color' value='$intento[$i]'>");
+            $resultado[] = "<input style='background-color:green' disabled type='color' value='$intento[$i]'>";
             continue;
         }
         if(in_array($intento[$i], $secreto)){
-            print("<input style='background-color:yellow' disabled type='color' value='$intento[$i]'>");
+            $resultado[] = "<input style='background-color:yellow' disabled type='color' value='$intento[$i]'>";
         }
         else{
-            print("<input disabled type='color' value='$intento[$i]'>");
+            $resultado[] = "<input disabled type='color' value='$intento[$i]'>";
         }
     }
+    
+    return $resultado;
 }
 
 function intentos(){
@@ -53,6 +57,10 @@ session_start();
 $secreto = isset($_SESSION["secreto"])? $_SESSION["secreto"] : nuevoSecreto($colores);
 // Guarda el secreto en la sesión (solo tiene efecto con nueva combinación)
 $_SESSION["secreto"] = $secreto;
+
+if (!isset($_SESSION['guardadointen'])) {
+    $_SESSION['guardadointen'] = array();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +78,6 @@ $_SESSION["secreto"] = $secreto;
     ?>
 </datalist>
 <?php
-$guardadointen = array();//intento para crear una Two-dimensional Array
 if(!empty($_POST)) {
     $intento = $_POST['intento'];
     echo "
@@ -80,10 +87,11 @@ if(!empty($_POST)) {
     echo "
     <form>
     ";
-    $intentorealizado=array(calculaResultado($intento, $secreto));//intentar meter el resultado en la variable $intentorealizado
-    array_push($guardadointen,array($intentorealizado)); 
-    for($i=0; $i<count($guardadointen); $i++) {
-        print_r($guardadointen[$i]); 
+    $_SESSION['guardadointen'][] = calculaResultado($intento, $secreto);
+    foreach ($_SESSION['guardadointen'] as $muestrainten) {
+        print_r($muestrainten);
+        echo "
+        <br>";
     }
     echo "
     </form>
